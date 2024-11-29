@@ -37,4 +37,6 @@ userSchema.methods.comparePassword=async function(password){
 userSchema.statics.hashPassword=async function(password){
     return await bcrypt.hash(password,10)
 }
-module.exports=userSchema;
+const userModel=mongoose.model('user',userSchema);
+
+module.exports=userModel;

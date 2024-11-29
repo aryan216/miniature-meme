@@ -13,7 +13,12 @@ router.post('/register',[
 ],
 userController.registerUser
 )
-
+router.post('/login',[
+    body('email').isEmail().withMessage("invalid email"),
+    body('password').isLength({min:5}).withMessage("password should be 5 character long")
+],
+userController.loginUser
+)
 
 
 
