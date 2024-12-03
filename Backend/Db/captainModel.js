@@ -32,7 +32,7 @@ const captainSchema=new mongoose.Schema({
         default:"active"
     },
     vehicle:{
-        colour:{
+        color:{
             type:String,
             required:true,
         },
@@ -59,17 +59,21 @@ const captainSchema=new mongoose.Schema({
 
 })
 
-captainSchema.method.generateAuthToken=function(){
+
+captainSchema.methods.generateAuthToken=function(){
     const token=jwt.sign({_id:this._id},process.env.JWT_SECRET,{expiresIn:'24h'})
     return token
 }
-captainSchema.method.comparePassword=async function(){
+captainSchema.methods.comparePassword=async function(password){
+    // console.log(password)
     return await bcrypt.compare(password,this.password)
 }
-captainSchema.static.hashPassword=async function(){
+
+captainSchema.statics.hashPassword=async function(password){
+    // console.log(password)
     return await bcrypt.hash(password,10)
 }
 
-const captainModel=mongoose.model("captain",captainModel)
+const captainModel=mongoose.model("captain",captainSchema)
 
 module.exports=captainModel
