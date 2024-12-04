@@ -15,5 +15,12 @@ router.post("/register",[
 
 ], captainController.registerCaptain)
 
+router.post("/login",[
+    body('email').isEmail().withMessage("Invalid Email"),
+    body('password').isLength({min:5}).withMessage("password must be 5 digits long")
+],captainController.loginCaptain)
+
+router.get("/profile",authMiddleware.authCaptain,captainController.getCaptainProfile)
+router.get('/logout',authMiddleware.authCaptain,captainController.logoutCaptain)
 
 module.exports=router
