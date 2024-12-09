@@ -4,12 +4,10 @@ const Home = () => {
   return (
     <div>
         <div>
-            <div className='text-white bg-black h-14 w-full p-6 text-3xl flex items-center'>
-                Uber.
-            </div>
+            
             <div className='flex justify-around  mt-11'>
                 <div className='flex-col mt-52 items-center'>
-                    <p className='text-3xl m-2'>Get started</p>
+                    <p className='text-3xl m-2'>Get started.</p>
                     <button className='w-64 h-11 font-semibold rounded-xl flex items-center gap-4 justify-center text-xl bg-black text-white'>Login <FaArrowRight /></button>
                 </div>
                 <img 

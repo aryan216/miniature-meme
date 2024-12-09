@@ -9,7 +9,11 @@ function App() {
   
   return (
     <div >
+        <div className='text-white bg-orange-400 h-14 w-full p-6 text-3xl flex items-center'>
+                Vacation Saga
+        </div>
         <Routes>
+          
           <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
