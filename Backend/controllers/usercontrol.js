@@ -36,9 +36,15 @@ module.exports.loginUser=async (req,res,next)=>{
     } 
 
     const {email,password}=req.body;
+    // console.log("Received email:", email);
+    // console.log("Received password:", password); 
+
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password are required' });
+      }
 
     const user=await userModel.findOne({email}).select('+password');
-
+    console.log("queried user",user)
     if(!user){
         res.status(401).json({message:'Invalid User/Password'})
     }

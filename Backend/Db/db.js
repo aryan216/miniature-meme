@@ -1,5 +1,10 @@
 const mongoose=require("mongoose");
-mongoose.connect(process.env.DB_CONNECT).then(console.log("connected to db"));
+mongoose.connect(process.env.DB_CONNECT)
+.then(() => console.log("Connected to DB"))
+.catch((err) => {
+  console.error("DB Connection Error:", err);
+  process.exit(1); 
+});
 const bcrypt=require("bcrypt")
 const jwt=require('jsonwebtoken')
 const userSchema=new mongoose.Schema({

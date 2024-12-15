@@ -1,10 +1,11 @@
 import './index.css'
 import { Routes,Route } from 'react-router-dom'
-import Home from './Pages/Home'
-import CaptainSignup from './Pages/CaptainSignup'
-import CaptainLogin from './Pages/CaptainLogin'
-import Signup from './Pages/Signup'
-import Login from './Pages/Login'
+import Home from './pages/Home'
+import CaptainSignup from './pages/CaptainSignup'
+import CaptainLogin from './pages/CaptainLogin'
+import Signup from './pages/Signup'
+import Start from './pages/start'
+import Login from './pages/Login'
 function App() {
   
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/captain-login' element={<CaptainLogin/>}/>
           <Route path='/captain-signup' element={<CaptainSignup/>}/>
+          <Route path='/start' element={<Start/>}/>
+          
         </Routes>  
     </div>
   )

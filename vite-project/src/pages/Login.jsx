@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import  {UserDataContext}  from '../context/Usercontext';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userData,setUserData]=useState({});
+  const {user,setUser}=useContext(UserDataContext)
+  const navigate=useNavigate();
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,9 +22,21 @@ const Login = () => {
     console.log(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     console.log(email, password);
+    const userData={
+      email:email,
+      password:password
+    }
+    const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`,userData)
+    console.log('this is response',response);
+    if(response.status===200){
+      const data=response.data
+      console.log(data)
+      setUser(data.user)
+      navigate('/start')
+    }
     setEmail('');
     setPassword('');
   };
@@ -55,6 +74,7 @@ const Login = () => {
 
           <button
             type="submit"
+            onClick={onSubmit}
             className="w-full py-3 bg-black text-white font-semibold rounded-lg"
           >
             Login
