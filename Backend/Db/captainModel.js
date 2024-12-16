@@ -47,8 +47,7 @@ const captainSchema=new mongoose.Schema({
         },
         capacity:{
             type:Number,
-            required:true,
-            set: (value) => parseInt(value, 10)
+            required:true
         },
         vehicleType:{
             type:String,

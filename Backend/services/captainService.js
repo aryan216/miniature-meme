@@ -1,9 +1,9 @@
 const captainModel=require("../Db/captainModel");
 
 module.exports.createCaptain=async ({
-    email,firstname,password,lastname,color,plate,vehicleType
+    email,firstname,password,lastname,color,plate,vehicleType,vehicleName,capacity
 })=>{
-    if(!firstname || !email || !password || !color || !plate  || !vehicleType){
+    if(!firstname || !email || !password || !color || !plate  || !vehicleType || !vehicleName || !capacity){
         throw new Error("all fields are mandatory");
     }
     const captain=captainModel.create({
@@ -12,7 +12,9 @@ module.exports.createCaptain=async ({
         email,
         password,
         vehicle:{
+            vehicleName,
             color,
+            capacity,
             plate,
             vehicleType
         }

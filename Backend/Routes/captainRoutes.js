@@ -14,7 +14,7 @@ router.post("/register",[
     body('vehicle.plate').isLength({ min: 10 }).withMessage('Plate must be at least 3 characters long'),
     body('vehicle.capacity').isLength({ min: 1 }).withMessage('enter vehicle capacity'),
     body('vehicle.vehicleType').isIn([ 'hatchback', 'suv', 'bike', 'auto' ]).withMessage('Invalid vehicle type'),
-
+    
 ], captainController.registerCaptain)
 
 router.post("/login",[

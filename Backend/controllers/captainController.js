@@ -5,6 +5,7 @@ const {validationResult}=require("express-validator")
 
 module.exports.registerCaptain= async (req,res,next)=>{
     console.log(req.body)
+    console.log(req.body.vehicle)
     const errors=validationResult(req);
          if(!errors.isEmpty()){
             return res.status(400).json({errors:errors.array()});
@@ -19,6 +20,7 @@ module.exports.registerCaptain= async (req,res,next)=>{
     if (isCaptainAlreadyExist) {
         return res.status(400).json({ message: 'Captain already exist' });
     }
+    
 
     const hashedPassword=await captainModel.hashPassword(password);
 
