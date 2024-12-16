@@ -30,11 +30,13 @@ const Login = () => {
       password:password
     }
     const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/user/login`,userData)
-    console.log('this is response',response);
-    if(response.status===200){
+    // console.log('this is response',response);
+    if(response.status===201){
       const data=response.data
-      console.log(data)
+      //console.log(data)
       setUser(data.user)
+      localStorage.setItem('token', data.token);
+      console.log("navigating start")
       navigate('/start')
     }
     setEmail('');
