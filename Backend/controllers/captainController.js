@@ -4,6 +4,7 @@ const blackListTokenModel=require("../Db/blacklist")
 const {validationResult}=require("express-validator")
 
 module.exports.registerCaptain= async (req,res,next)=>{
+    console.log(req.body)
     const errors=validationResult(req);
          if(!errors.isEmpty()){
             return res.status(400).json({errors:errors.array()});
@@ -11,7 +12,8 @@ module.exports.registerCaptain= async (req,res,next)=>{
         }   
     
     const {firstname,lastname,email,password,vehicle}=req.body;
-
+    console.log(vehicle.vehicleName)
+    console.log(vehicle.capacity)
     const isCaptainAlreadyExist = await captainModel.findOne({ email });
 
     if (isCaptainAlreadyExist) {
@@ -25,6 +27,7 @@ module.exports.registerCaptain= async (req,res,next)=>{
         lastname,
         email,
         password:hashedPassword,
+        vehicleName: vehicle.vehicleName,
         color: vehicle.color,
         plate: vehicle.plate,
         capacity: vehicle.capacity,

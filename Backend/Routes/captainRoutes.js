@@ -9,9 +9,11 @@ router.post("/register",[
     body('firstname').isLength({min:3}).withMessage('enter name'),
     body('lastname').isLength({min:3}).withMessage('enter lastname'),
     body('password').isLength({min:5}).withMessage('password must be 6 digits long'),
+    body('vehicle.vehicleName').isLength({ min: 3 }).withMessage('Vehicle name must be at least 3 characters long'),
     body('vehicle.color').isLength({ min: 3 }).withMessage('Color must be at least 3 characters long'),
     body('vehicle.plate').isLength({ min: 10 }).withMessage('Plate must be at least 3 characters long'),
-    body('vehicle.vehicleType').isIn([ 'car', 'motorcycle', 'auto' ]).withMessage('Invalid vehicle type'),
+    body('vehicle.capacity').isLength({ min: 1 }).withMessage('enter vehicle capacity'),
+    body('vehicle.vehicleType').isIn([ 'hatchback', 'suv', 'bike', 'auto' ]).withMessage('Invalid vehicle type'),
 
 ], captainController.registerCaptain)
 

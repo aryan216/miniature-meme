@@ -32,6 +32,10 @@ const captainSchema=new mongoose.Schema({
         default:"active"
     },
     vehicle:{
+        vehicleName:{
+            type:String,
+            required:true
+        },
         color:{
             type:String,
             required:true,
@@ -41,11 +45,16 @@ const captainSchema=new mongoose.Schema({
             required:true,
             minlength:[10,"plate must be 10 characters long"]
         },
+        capacity:{
+            type:Number,
+            required:true,
+            set: (value) => parseInt(value, 10)
+        },
         vehicleType:{
             type:String,
-            required:true
+            required:true,
+            enum: [ 'hatchback','suv', 'motorcycle', 'auto' ]
         }
-        
 
     },
     location:{
