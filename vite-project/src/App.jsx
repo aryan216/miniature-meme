@@ -8,7 +8,9 @@ import Start from './pages/Start'
 import Login from './pages/Login'
 import UserProtectedRoutes from './pages/UserProtectedRoutes'
 import UserLogout from './pages/USerLogout'
-
+import CaptainHome from './pages/CaptainHome'
+import CaptainLogout from './pages/CaptainLogout'
+import CaptainProtectedRoutes from './pages/CaptainProtectedRoutes'
 
 function App() {
   
@@ -32,7 +34,16 @@ function App() {
             <UserProtectedRoutes>
                <UserLogout/>  
             </UserProtectedRoutes>}/>
-          
+            <Route path='/captain-home' element={
+              <CaptainProtectedRoutes>
+                <CaptainHome/>
+              </CaptainProtectedRoutes>
+            }/>
+          <Route path='/captain/logout' element={
+            <CaptainProtectedRoutes>
+               <CaptainLogout/>
+            </CaptainProtectedRoutes>
+          }/>
         </Routes>  
     </div>
   )

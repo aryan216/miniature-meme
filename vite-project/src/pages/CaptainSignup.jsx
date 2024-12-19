@@ -81,6 +81,8 @@ const CaptainSignup = () => {
       const data = response.data;
       console.log(data);
       setCaptain(data.captain);
+      localStorage.setItem('captaintoken',data.token);
+      navigate('/captain-home')
     }
     setEmail("");
     setPassword("");

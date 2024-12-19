@@ -30,8 +30,8 @@ const CaptainLogin = () => {
     if(response.status===201 || response.status===200){
       const data=response.data
       setCaptain(data.captain)
-      localStorage.setItem('token', data.token);
-      navigate('/start')
+      localStorage.setItem('captaintoken', data.token);
+      navigate('/captain-home')
     }
     setEmail('');
     setPassword('');
@@ -81,7 +81,7 @@ const CaptainLogin = () => {
           <Link to="/captain-signup" className="text-black hover:underline">
             Sign up
           </Link>
-        </p>
+        </p> 
 
         <Link
           to="/login"
