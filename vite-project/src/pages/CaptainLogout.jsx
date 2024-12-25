@@ -4,13 +4,12 @@ import axios from 'axios'
 
 
 const CaptainLogout = () => {
-  
   const captaintoken=localStorage.getItem('captaintoken');
   const navigate=useNavigate();
   
   useEffect(()=>{
     axios.get(`${import.meta.env.VITE_BASE_URL}/captain/logout`,{
-        headers:{
+        headers:{   
             Authorization:`Bearer ${captaintoken}`
         }
     }).then((res)=>{
@@ -19,17 +18,12 @@ const CaptainLogout = () => {
             localStorage.removeItem('captaintoken');
             navigate('/captain-login');
         }
-
-
     })
-    
   })
-
   return (
     <div>
-      CaptainLogout
+      Captain Logout
     </div>
   )
 }
-
 export default CaptainLogout
